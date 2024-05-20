@@ -25,15 +25,21 @@
     align-items: center !important;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
 
 #hd{
+    padding: 0 3rem;
     h1{
         a{}
     }
     .gnb{
-        &:hover{
+        // ul 네비게이션
+        &:hover{ ////여기서부터
             &:before{
-                height: 180px;
+                height:calc(13rem + 20px );
 
             }
             .gnb_li{
@@ -42,11 +48,14 @@
                     
                 }
                 .gnb_ul{
-    
+                    height:calc(13rem + 20px );
                 }
             }
-        }
+        }     ////여기까지가 gnb hover했을 때의 스타일 상태
+        
         &:before{
+            // 메뉴 뒤 전체 날개 제일 중요한 것은 position 이 abs라는 것 , hd에 position을 넣어주어 기준이 되도록 했음
+            // 화면 가득 나오게 했던 것은 hd가 기준이기 때문
             content: "";
             position: absolute;
             left: 0;
@@ -56,13 +65,25 @@
             background-color: rgba(0,0,0,.5);
             transition: 0.5s;
         }
-        .gnb_li{
-
-            .gnb_a{
-                
+        .gnb_li{ 
+            // 대메뉴 li
+            padding: 0 1rem;
+            font-size: 1.3rem;
+            line-height: 2;   //글자의 한줄 간격
+            .gnb_a{ 
+                // 대메뉴 a
+                font-size: 2rem;  
+                line-height: 80px;  //상단의 height가 가장 큰 객체의 높이를 넣어준다.
+                display: block;  // inline태그 block처리 
             }
             .gnb_ul{
-
+                // 소메뉴 포지션이abs
+                top: 100%;
+                left: 0;
+                min-width: 120px;
+                height: 0;
+                overflow: hidden;
+                transition: 0.5s;
             }
         }
     }
